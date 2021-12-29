@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+<title>View Feedback</title>
+
+{% endblock %}
+
+
+
+{% block contents%}
+
+{% if session["username"] == feedback.username %}
+<form action="/feedback/{{feedback.id}}/update" method="POST">
+    {% include "form.html" %}
+    <button type="submit">UPDATE</button>
+</form>
+<br>
+<form action="/feedback/{{feedback.id}}/delete" method="POST">
+    <button type="submit">DELETE</button>
+</form>
+{% endif %}
+{% if session["username"] != feedback.username %}
+<p>Title: {{feedback.title}}</p>
+<p>Feedback: {{feedback.content}}</p>
+<p>By: {{feedback.username}}</p>
+{% endif %}
+
+{% endblock %}

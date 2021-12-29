@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+<title>Add New Feedback</title>
+
+{% endblock %}
+
+
+
+{% block contents%}
+
+<form action="/users/{{session['username']}}/feedback/add" method="POST">
+    {% include "form.html" %}
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}

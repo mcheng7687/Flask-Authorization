@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  {% block title %}
+  {% endblock %}
+  <link rel="stylesheet" href="../static/style.css">
+</head>
+<nav>
+  {% if 'username' not in session %}
+  <a href="/">Home Page</a>
+  <a href="/register">Register</a>
+  <a href="/login">Login</a>
+  {% endif %}
+  {% if 'username' in session %}
+  <a href="/users/{{session['username']}}">Home Page</a>
+  <a href="/users/{{session['username']}}/feedback/add">New Feedback</a>
+  <a>Hi, {{session['username']}}</a>
+  <a href="/logout">Logout</a>
+  {% endif %}
+</nav>
+<body>
+
+  {% block contents %}
+  {% endblock %}
+  <script src="https://unpkg.com/jquery"></script>
+  <script src="https://unpkg.com/axios/dist/axios.js"></script>
+  <!-- <script src="../static/script.js"></script> -->
+
+</body>
+
+</html>
